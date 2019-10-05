@@ -14,6 +14,11 @@ def show_schedule(schedule):
 		for subject in day_list:
 			print('\t', subject)
 
+total_hours = sum(map_classes_per_week.values())
+counter_available_days = indexes_of_available_days_interval[1] - indexes_of_available_days_interval[0]
+if counter_available_days * counter_classes_per_day < total_hours:
+	print("Voce colocou poucas horas por dia")
+	exit()
 
 schedule = []
 for counter in range(len(standard_day_reference)):
