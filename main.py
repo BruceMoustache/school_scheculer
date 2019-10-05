@@ -21,10 +21,13 @@ for counter in range(len(standard_day_reference)):
 for subject in map_classes_per_week:
 	remaining_sheduling = map_classes_per_week[subject]
 	while remaining_sheduling > 0:
-		subject_day_index = random.randint(*available_days_interval)
-		subject_time_index = random.randint(0, counter_classes_per_day - 1)
-		single_schedule[subject_day_index][subject_time_index] = subject
-		remaining_sheduling -= 1
+		while True:
+			subject_day_index = random.randint(*available_days_interval)
+			subject_time_index = random.randint(0, counter_classes_per_day - 1)
+			if single_schedule[subject_day_index][subject_time_index] == None:
+				single_schedule[subject_day_index][subject_time_index] = subject
+				remaining_sheduling -= 1
+				break
 
 show_schedule(single_schedule)
 
